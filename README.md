@@ -68,7 +68,7 @@ This case study does not claim learning improvement without a controlled measure
 
 ## Demo and scope
 
-A guest demo is planned after public exercises and isolated progress are available. Curriculum, user data, parameters, and production source remain private.
+A deployed demo is kept isolated from production data. Its stable public alias is not linked here until it can be verified. Curriculum, user data, model parameters, and production source remain private.
 
 ## License
 
