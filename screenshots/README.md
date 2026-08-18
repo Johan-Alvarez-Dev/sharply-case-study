@@ -1,3 +1,3 @@
-# Plan de capturas
+# Screenshot Plan
 
-Usar perfiles sintéticos: sesión de práctica, feedback de tests, cola de repaso y vista de maestría. No mostrar tokens, contenido licenciado ni datos reales.
+Planned synthetic evidence: practice session, test feedback, review queue, and mastery map. Captures must not include licensed curriculum or real profiles.

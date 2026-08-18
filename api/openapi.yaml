@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
-  title: Sharply Public Contract
+  title: Sharply Public API Contract
   version: 1.0.0
 paths:
   /api/public/reviews/due:
     get:
-      summary: Obtiene el resumen de repasos pendientes
+      summary: Return a privacy-safe due-review summary
       responses:
-        '200': { description: Resumen sin datos personales }
+        '200': { description: Due-review summary }

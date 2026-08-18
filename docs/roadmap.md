@@ -1,7 +1,7 @@
-# Roadmap público
+# Public Roadmap
 
-- Completar el MVP web de práctica activa.
-- Ampliar tipos de ejercicio y evaluación.
-- Validar parámetros del motor con datos suficientes.
-- Fortalecer sandbox y límites de ejecución.
-- Expandir desktop/Android e i18n sin bifurcar el core.
+- Complete the active-practice web MVP.
+- Expand exercise types and automated evaluation.
+- Calibrate learning parameters only after sufficient data exists.
+- Strengthen execution sandbox limits.
+- Expand desktop/Android without forking business behavior.

@@ -1,13 +1,13 @@
-# Arquitectura pública
+# Public Architecture
 
-Sharply usa Clean Architecture y frontend feature-first.
+Sharply combines Clean Architecture on the backend with a feature-first React client.
 
-| Área | Decisión |
+| Area | Responsibility |
 | --- | --- |
-| Domain | Reglas puras sin frameworks |
-| Application | CQRS, FSRS/BKT y puertos |
-| Infrastructure | EF Core, Supabase y adaptadores |
-| API | Minimal APIs, JWT y composición |
-| Web | React, Query, i18n y runners client-side |
+| Domain | Entities, value objects, invariants |
+| Application | Commands/queries, ports, scheduling, mastery |
+| Infrastructure | EF Core, PostgreSQL, Supabase adapters |
+| API | Minimal endpoints, JWT, validation, composition |
+| Web | Learning flows, runners, state, i18n |
 
-La ejecución de código del alumno ocurre en un entorno acotado del cliente. La API conserva progreso, maestría y reglas del dominio. Los DTO son explícitos y los errores siguen ProblemDetails.
+Domain has no framework dependencies. Application depends on interfaces rather than EF Core or ASP.NET Core. Code execution is isolated in browser/WASM workers while the API owns durable progress and authorization.

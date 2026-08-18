@@ -1,71 +1,74 @@
-# Sharply
+# Sharply — Active Developer Learning
 
-### Práctica técnica activa con repetición espaciada y maestría verificable
+### Deterministic learning models, executable practice, and interview preparation
 
-[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)](https://dotnet.microsoft.com/) [![React 19](https://img.shields.io/badge/React-19-149ECA?logo=react)](https://react.dev/) [![ADRs](https://img.shields.io/badge/ADRs-18-22C55E)](./docs/decisions.md) [![Core privado](https://img.shields.io/badge/core-private-111827)](#alcance-público)
+[![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)](https://dotnet.microsoft.com/) [![Clean Architecture](https://img.shields.io/badge/architecture-clean-22C55E)](./docs/architecture.md) [![React 19](https://img.shields.io/badge/React-19-149ECA?logo=react)](https://react.dev/) [![ADRs](https://img.shields.io/badge/private_ADRs-18-2563EB)](./docs/decisions.md)
 
-Sharply ayuda a desarrolladores a recuperar habilidades reales de C#, .NET, EF Core, React y entrevistas mediante ejercicios que se ejecutan y evalúan, no lectura pasiva.
+Sharply rebuilds practical C#, .NET, EF Core, React, and interview skills through executable exercises rather than passive reading. Scheduling and mastery are modeled separately so motivation mechanics cannot corrupt learning decisions.
 
-> Este repositorio documenta arquitectura, decisiones y una muestra independiente. El producto principal permanece privado.
+> The product source and curriculum remain private. This repository provides an engineering case study and independently written algorithms/tests.
 
-## Problema
+## The problem
 
-El uso intensivo de IA puede debilitar la práctica deliberada. Sharply combina ejecución de código en cliente, ejercicios activos, FSRS para decidir cuándo repasar y BKT para estimar maestría por concepto.
+Heavy AI assistance can reduce deliberate practice. Sharply uses active exercises, code execution, spaced repetition, and concept-level mastery to make skill recovery measurable.
 
-## Mi responsabilidad
+## My role
 
-Arquitectura y desarrollo full-stack: Clean Architecture, motor de aprendizaje en C# puro, autenticación JWT, frontend React/PWA, experiencia multiplataforma y ADR técnicos.
+I designed the architecture, learning engine, authentication boundary, frontend platform, and technical decision process. The codebase is intentionally designed to be readable enough to teach the same engineering practices the product exercises.
 
-## Capacidades demostradas
+## Engineering highlights
 
-- Domain y Application libres de dependencias web/persistencia.
-- CQRS por vertical slice con dispatchers propios.
-- FSRS-6 y BKT como lógica determinista testeable.
-- Supabase Auth; JWT ES256/RS256 validado por la API.
-- EF Core/PostgreSQL, RLS como defensa en profundidad.
-- PWA, Tauri desktop/Android e i18n en cinco idiomas.
-- 18 ADR públicos en el repositorio privado de trabajo.
+- Clean Architecture enforced by project dependencies.
+- CQRS-style vertical slices with custom dispatchers.
+- Deterministic spaced-repetition and Bayesian mastery logic in pure C#.
+- Supabase Auth JWT validation with roles and RLS defense in depth.
+- EF Core/PostgreSQL persistence behind application ports.
+- Client-side Sandpack and C# WASM execution boundaries.
+- React PWA with Tauri targets and five-language i18n.
+- 18 recorded architectural decisions in the private repository.
 
-## Arquitectura
+## Architecture
 
 ```mermaid
 flowchart LR
-  PWA["React · PWA / Tauri"] --> API[".NET Minimal API"]
-  API --> App["Application · CQRS · FSRS/BKT"]
-  App --> Domain["Domain"]
+  Client["React PWA / Tauri"] --> API[".NET Minimal API"]
+  API --> Application["CQRS · scheduling · mastery"]
+  Application --> Domain["Pure domain"]
   API --> Infra["EF Core · Supabase"]
-  PWA --> Runner["Sandpack / C# WASM"]
+  Client --> Runners["Sandpack / C# WASM"]
 ```
 
-Lee [arquitectura](./docs/architecture.md), [decisiones](./docs/decisions.md) y [roadmap](./docs/roadmap.md).
+Read [architecture](./docs/architecture.md), [decisions](./docs/decisions.md), and [engineering evidence](./docs/engineering-evidence.md).
 
-## Muestra pública
+## Public code samples
 
-`SpacedReviewScheduler` muestra una política pequeña, determinista e inmutable de repaso. No copia el algoritmo productivo completo.
+| Sample | Demonstrates |
+| --- | --- |
+| `SpacedReviewScheduler` | Immutable state and deterministic intervals |
+| `BayesianMasteryModel` | Pure probability update with guarded parameters |
+| `SubmitReviewHandler` | Application handler depending on ports, not EF/HTTP |
+| xUnit tests | Deterministic edge cases and invalid-state rejection |
 
 ```bash
 dotnet test tests/Sharply.PublicSample.Tests.csproj
 ```
 
-Revisa [código](./sample-code/SpacedReviewScheduler.cs), [pruebas](./tests/SpacedReviewSchedulerTests.cs) y [OpenAPI](./api/openapi.yaml).
+## Challenges addressed
 
-## Demo
+1. Separating when to review from whether a concept is mastered.
+2. Keeping gamification from manipulating learning intervals.
+3. Executing learner code without running arbitrary code in the main API.
+4. Making algorithms deterministic and testable without infrastructure.
+5. Supporting web/desktop/Android from one frontend codebase.
 
-La demo pública está pendiente de un perfil invitado con progreso separado y ejercicios licenciados para publicación.
+## Evidence standard
 
-## Resultados verificables
+This case study does not claim learning improvement without a controlled measurement. It demonstrates implementation quality, architecture, and reproducible tests.
 
-- Separación explícita entre scheduling, maestría y gamificación.
-- Pruebas deterministas del scheduler y pruebas Vitest de actividades.
-- Arquitectura documentada mediante ADR, incluidas alternativas descartadas.
+## Demo and scope
 
-No se afirma mejora de aprendizaje sin un estudio o datos suficientes.
+A guest demo is planned after public exercises and isolated progress are available. Curriculum, user data, parameters, and production source remain private.
 
-## Alcance público
+## License
 
-| Público | Privado |
-| --- | --- |
-| Modelo arquitectónico y ADR resumidos | Código de producto y contenido curricular |
-| Scheduler simplificado y tests | Parámetros, telemetría y datos de usuarios |
-
-Capturas futuras: [screenshots/README.md](./screenshots/README.md). Seguridad: [SECURITY.md](./SECURITY.md).
+MIT applies only to the public samples.

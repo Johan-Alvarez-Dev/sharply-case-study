@@ -8,9 +8,14 @@ public sealed record ReviewState(
     DateTimeOffset LastReviewedAt,
     DateTimeOffset DueAt);
 
-public sealed class SpacedReviewScheduler
+public interface IReviewScheduler
 {
-    public ReviewState Next(ReviewState current, ReviewRating rating, DateTimeOffset reviewedAt)
+    ReviewState Schedule(ReviewState current, ReviewRating rating, DateTimeOffset reviewedAt);
+}
+
+public sealed class SpacedReviewScheduler : IReviewScheduler
+{
+    public ReviewState Schedule(ReviewState current, ReviewRating rating, DateTimeOffset reviewedAt)
     {
         ArgumentNullException.ThrowIfNull(current);
         if (current.Difficulty is < 1 or > 10)

@@ -12,7 +12,7 @@ public sealed class SpacedReviewSchedulerTests
     public void Good_review_increases_stability_and_reduces_difficulty()
     {
         var current = new ReviewState(5, 3, Now.AddDays(-3), Now);
-        var next = _scheduler.Next(current, ReviewRating.Good, Now);
+        var next = _scheduler.Schedule(current, ReviewRating.Good, Now);
         Assert.Equal(4.85, next.Difficulty, 2);
         Assert.Equal(6, next.StabilityDays);
         Assert.Equal(Now.AddDays(6), next.DueAt);
@@ -22,7 +22,7 @@ public sealed class SpacedReviewSchedulerTests
     public void Again_review_never_schedules_less_than_one_day()
     {
         var current = new ReviewState(5, 1, Now.AddDays(-1), Now);
-        var next = _scheduler.Next(current, ReviewRating.Again, Now);
+        var next = _scheduler.Schedule(current, ReviewRating.Again, Now);
         Assert.Equal(Now.AddDays(1), next.DueAt);
     }
 
@@ -31,6 +31,6 @@ public sealed class SpacedReviewSchedulerTests
     {
         var current = new ReviewState(5, 3, Now, Now.AddDays(3));
         Assert.Throws<ArgumentOutOfRangeException>(() =>
-            _scheduler.Next(current, ReviewRating.Good, Now.AddMinutes(-1)));
+            _scheduler.Schedule(current, ReviewRating.Good, Now.AddMinutes(-1)));
     }
 }

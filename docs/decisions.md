@@ -1,21 +1,21 @@
-# Decisiones técnicas públicas
+# Technical Decisions
 
-## C# puro para el motor
+## Pure C# learning engine
 
-FSRS/BKT permanecen deterministas y testeables; no se introduce un servicio Python.
+Scheduling and mastery remain deterministic and framework-independent. A separate Python service would add deployment complexity without improving this use case.
 
-## Scheduling y maestría separados
+## Scheduling and mastery are different signals
 
-FSRS responde cuándo repasar; BKT estima si un concepto se domina. XP no altera ninguno.
+Spaced repetition answers when; Bayesian mastery answers whether. XP and streaks cannot change either calculation.
 
-## Ejecución client-side
+## Client-side execution
 
-Sandpack y C# WASM aíslan ejercicios acotados y reducen exposición del servidor.
+Bounded Sandpack/WASM runners reduce exposure of the main API to arbitrary learner code.
 
-## Auth administrada, autorización propia
+## Managed identity, owned authorization
 
-Supabase emite tokens; la API valida firma/claims y aplica políticas. RLS añade defensa en profundidad.
+Supabase issues JWTs; the .NET API validates them and applies its own policies. PostgreSQL RLS remains defense in depth.
 
-## ADR como memoria
+## ADRs as project memory
 
-18 decisiones registran contexto, alternativas y consecuencias para evitar reescrituras impulsivas.
+Eighteen recorded decisions preserve context, alternatives, and consequences.
