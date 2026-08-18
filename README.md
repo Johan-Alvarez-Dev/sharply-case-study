@@ -3,6 +3,7 @@
 ### Deterministic learning models, executable practice, and interview preparation
 
 [![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)](https://dotnet.microsoft.com/) [![Clean Architecture](https://img.shields.io/badge/architecture-clean-22C55E)](./docs/architecture.md) [![React 19](https://img.shields.io/badge/React-19-149ECA?logo=react)](https://react.dev/) [![ADRs](https://img.shields.io/badge/private_ADRs-18-2563EB)](./docs/decisions.md)
+[![Public sample CI](https://github.com/Johan-Alvarez-Dev/sharply-case-study/actions/workflows/ci.yml/badge.svg)](https://github.com/Johan-Alvarez-Dev/sharply-case-study/actions/workflows/ci.yml)
 
 Sharply rebuilds practical C#, .NET, EF Core, React, and interview skills through executable exercises rather than passive reading. Scheduling and mastery are modeled separately so motivation mechanics cannot corrupt learning decisions.
 
